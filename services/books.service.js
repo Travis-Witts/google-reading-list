@@ -2,7 +2,7 @@ const db = require("../models");
 
 exports.getAll = async () => {
   try {
-    const books = await db.Book.find().sort({ date: -1 });
+    const books = await db.Book.find().sort({ date: 0 });
     return books;
   } catch (error) {
     return error;

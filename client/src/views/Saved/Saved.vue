@@ -1,5 +1,7 @@
 <template>
-  <div class="">
+  <div class="container">
+    <h2>View your saved Books here:</h2>
+
     <card
       v-for="book in savedBooks"
       :method="remove"
@@ -17,6 +19,8 @@
 <script>
 import axios from "axios";
 import Card from "../../components/SavedCard/SavedCard.vue";
+
+
 export default {
   components: { Card },
   data() {
@@ -30,7 +34,6 @@ export default {
   },
   methods: {
     remove: async function(id) {
-      console.log(id);
       const deletedBook = await axios.delete(`/api/books/${id}`);
       console.log(deletedBook);
     },

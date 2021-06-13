@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h2 class="mt-5">Welcome to your Reading List, Search for popular books below!:</h2>
     <search-bar @search="search" :method="search" />
         <search-card
       v-for="book in searchBooks"
@@ -20,6 +19,8 @@
 import SearchBar from '../../components/SearchBar/SearchBar.vue';
 import SearchCard from '../../components/SearchCard/SearchCard.vue'
 import axios from 'axios';
+
+document.title = "Google Books";
 
 export default {
   name: 'Home',
