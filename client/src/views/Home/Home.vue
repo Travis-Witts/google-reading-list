@@ -45,14 +45,12 @@ export default {
           printType: 'books'
         }
       });
-      console.log(books.data)
       this.searchBooks = books.data.items;
     },
     save: async function(body) {
       const {authors, description, img, title, link, pkey} = body;
       const bookBody = { authors, description, image: img, title, link, id: pkey };
-      const newBook = await axios.post('/api/books', bookBody);
-      console.log(newBook);
+      await axios.post('/api/books', bookBody);
     }
   }
 }
