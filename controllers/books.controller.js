@@ -11,9 +11,9 @@ exports.returnSaved = async (req, res, next) => {
 };
 
 exports.saveNew = async (req, res, next) => {
-    const { author, description, image, title } = req.body;
+    const { authors, description, image, title, link } = req.body;
     try {
-        const newBook = await BookService.saveBook(author, description, image, title);
+        const newBook = await BookService.saveBook(authors, description, image, title, link);
 
         res.status(200).json(newBook)
     } catch (error) {
