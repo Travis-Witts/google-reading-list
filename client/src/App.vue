@@ -1,9 +1,22 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" href="/">Google BookSearch</a>
+
+      <ul class="nav justify-content-end">
+        <router-link class="nav-link" to="/"
+          ><button class="btn btn-outline-success">Home</button></router-link
+        >
+
+        <router-link class="nav-link" to="/save"
+          ><button class="btn btn-outline-info">Saved</button></router-link
+        >
+      </ul>
+    </nav>
+    <div class="container">
+      <router-view />
+    </div>
   </div>
-  <router-view/>
 </template>
 
 <style>
