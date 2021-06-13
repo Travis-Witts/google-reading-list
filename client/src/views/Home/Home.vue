@@ -4,7 +4,9 @@
     <search-bar @search="search" :method="search" />
         <search-card
       v-for="book in searchBooks"
+      :method="save"
       :key="book.id"
+      :pkey="book.id"
       :authors="book.volumeInfo.authors"
       :description="book.volumeInfo.description"
       :img="book.volumeInfo.imageLinks.thumbnail"
@@ -32,7 +34,7 @@ export default {
   },
   methods: {
     search: async function(query) {
-      console.log(query)
+      
       const books = await axios.get('https://www.googleapis.com/books/v1/volumes',
       {
         params: {
@@ -42,9 +44,14 @@ export default {
           printType: 'books'
         }
       });
-      console.log(books)
+      console.log(books.data)
       this.searchBooks = books.data.items;
-      console.log(this.searchBooks.target)
+    },
+    save: async function(body) {
+      const {authors, description, img, title, link, pkey} = body;
+      const bookBody = { authors, description, image: img, title, link, id: pkey };
+      const newBook = await axios.post('/api/books', bookBody);
+      console.log(newBook);
     }
   }
 }
