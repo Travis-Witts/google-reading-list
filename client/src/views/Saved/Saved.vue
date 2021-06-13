@@ -34,8 +34,7 @@ export default {
   },
   methods: {
     remove: async function(id) {
-      const deletedBook = await axios.delete(`/api/books/${id}`);
-      console.log(deletedBook);
+      await axios.delete(`/api/books/${id}`);
     },
   },
 };
